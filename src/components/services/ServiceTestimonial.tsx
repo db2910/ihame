@@ -20,7 +20,7 @@ export default function ServiceTestimonial() {
           </div>
           
           <blockquote className="text-xl md:text-2xl font-medium mb-8 leading-relaxed">
-            "IHAME Logistics has transformed our supply chain operations. Their cargo transport service is reliable, efficient, and their team is always professional. We've seen a 30% improvement in delivery times since partnering with them."
+            &quot;IHAME Logistics has transformed our supply chain operations. Their cargo transport service is reliable, efficient, and their team is always professional. We&apos;ve seen a 30% improvement in delivery times since partnering with them.&quot;
           </blockquote>
           
           <div className="flex items-center justify-center space-x-4">

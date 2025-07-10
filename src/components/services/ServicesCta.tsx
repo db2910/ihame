@@ -20,7 +20,7 @@ export default function ServicesCta() {
                 One partner for all your logistics needs.
               </h3>
               <p className="text-xl text-gray-100">
-                Ready to streamline your supply chain? Let's discuss how IHAME can help your business grow.
+                Ready to streamline your supply chain? Let&apos;s discuss how IHAME can help your business grow.
               </p>
             </div>
             

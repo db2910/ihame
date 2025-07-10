@@ -12,6 +12,10 @@ interface ErrorDetails {
   [key: string]: any;
 }
 
+interface TrackingData {
+  [key: string]: any;
+}
+
 const loadingMessages = [
   "Connecting to logistics networks...",
   "Scanning for your shipment details...",
@@ -21,7 +25,7 @@ const loadingMessages = [
 ];
 
 export default function TrackShipment() {
-  const [trackingData, setTrackingData] = useState(null);
+  const [trackingData, setTrackingData] = useState<TrackingData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [errorDetails, setErrorDetails] = useState<ErrorDetails | null>(null);

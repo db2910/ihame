@@ -5,6 +5,14 @@ const ADMIN_EMAIL = 'donkyleben@gmail.com';
 // Use the Resend-provided sender for now; update to branded domain when available
 const FROM_EMAIL = 'onboarding@resend.dev';
 
+interface FormData {
+  name: string;
+  email: string;
+  phone?: string;
+  service?: string;
+  message: string;
+}
+
 async function sendEmail({ to, subject, html }: { to: string; subject: string; html: string }) {
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -22,7 +30,7 @@ async function sendEmail({ to, subject, html }: { to: string; subject: string; h
   return res.ok;
 }
 
-function adminEmailHtml(form: any) {
+function adminEmailHtml(form: FormData) {
   return `
     <div style="font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fa; padding: 32px; border-radius: 16px; max-width: 600px; margin: auto;">
       <h2 style="color: #2875B4; margin-bottom: 8px;">New Inquiry from IHAME Website</h2>
@@ -39,7 +47,7 @@ function adminEmailHtml(form: any) {
   `;
 }
 
-function userEmailHtml(form: any) {
+function userEmailHtml(form: FormData) {
   return `
     <div style="font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fa; padding: 32px; border-radius: 16px; max-width: 600px; margin: auto;">
       <h2 style="color: #2875B4; margin-bottom: 8px;">Thank You for Contacting IHAME Logistics!</h2>
@@ -80,7 +88,7 @@ export async function POST(req: NextRequest) {
       html: userEmailHtml(form),
     });
     return NextResponse.json({ ok: true });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 });
   }
 } 

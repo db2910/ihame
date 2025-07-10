@@ -162,7 +162,7 @@ export async function POST(request: NextRequest) {
               { status: 404 }
             );
           }
-        } catch (e) {
+        } catch {
           // If we can't parse the error, use a generic message
         }
       }
@@ -197,7 +197,12 @@ export async function POST(request: NextRequest) {
       destination: tracking.destination_country ? 
         `${tracking.destination_city || ''} ${tracking.destination_country}`.trim() : undefined,
       checkpoints: tracking.checkpoints ? 
-        tracking.checkpoints.map((checkpoint: any) => ({
+        tracking.checkpoints.map((checkpoint: {
+          location?: string;
+          checkpoint_time: string;
+          tag?: string;
+          message?: string;
+        }) => ({
           location: checkpoint.location || 'Unknown',
           timestamp: checkpoint.checkpoint_time,
           status: checkpoint.tag || 'Unknown',

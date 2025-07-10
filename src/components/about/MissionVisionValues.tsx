@@ -157,7 +157,7 @@ export default function MissionVisionValues() {
                 </motion.div>
                 <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Our Vision</h2>
                 <p className="text-base md:text-lg leading-relaxed">
-                  To become East Africa's most trusted logistics partner, known for delivering dependable, tech-driven, and scalable supply chain solutions.
+                  To become East Africa&apos;s most trusted logistics partner, known for delivering dependable, tech-driven, and scalable supply chain solutions.
                 </p>
               </div>
             </motion.div>

@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import AboutHero from '@/components/about/AboutHero';
 import MissionVisionValues from '@/components/about/MissionVisionValues';
 import CompanyTimeline from '@/components/about/CompanyTimeline';
-import TeamSnapshot from '@/components/about/TeamSnapshot';
 import ImpactScale from '@/components/about/ImpactScale';
 import AboutTestimonial from '@/components/about/AboutTestimonial';
 import AboutCta from '@/components/about/AboutCta';

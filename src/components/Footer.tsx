@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -14,23 +16,23 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo + Tagline */}
         <div className="flex flex-col items-start">
-          <a href="/" className="flex items-center group mb-3">
-            <img src="/logo.jpg" alt="IHAME Logistics Logo" className="w-24 h-18 rounded shadow-md object-cover" />
+          <Link href="/" className="flex items-center group mb-3">
+            <Image src="/logo.jpg" alt="IHAME Logistics Logo" width={96} height={72} className="w-24 h-18 rounded shadow-md object-cover" />
             <span className="ml-3 font-bold text-xl tracking-wide text-[#7AB648] group-hover:text-[#2875B4] transition-colors">IHAME LOGISTICS</span>
-          </a>
+          </Link>
           <span className="text-base text-[#E0E0E0]">Your Order, Our Responsibility</span>
         </div>
         {/* Quick Links */}
         <div className="flex flex-col space-y-3">
           <span className="font-semibold mb-3 text-lg text-[#7AB648]">Quick Links</span>
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="hover:underline focus:outline-none focus:underline text-base text-[#E0E0E0] hover:text-[#7AB648] transition-colors"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
         {/* Contact Info & Socials */}

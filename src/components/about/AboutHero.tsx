@@ -106,7 +106,7 @@ export default function AboutHero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<{id: number; delay: number; duration: number; x: number; y: number; size: number;}[]>([]);
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;

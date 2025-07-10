@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const stats = [
   { number: 100, suffix: '+', label: 'Clients Served', icon: '👥', color: 'from-blue-500 to-blue-600' },
@@ -38,9 +39,11 @@ export default function ImpactScale() {
             className="relative"
           >
             <div className="bg-white rounded-2xl p-0 md:p-2 shadow-lg relative overflow-hidden">
-              <img
+              <Image
                 src="/images/freight.jpg"
                 alt="Modern logistics truck"
+                width={800}
+                height={320}
                 className="w-full h-64 md:h-80 object-cover rounded-xl"
                 loading="lazy"
               />

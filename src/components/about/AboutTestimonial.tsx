@@ -33,7 +33,7 @@ export default function AboutTestimonial() {
           <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 w-6 h-6 md:w-8 md:h-8 bg-gradient-to-br from-[#7AB648] to-[#2875B4] rounded-full opacity-20"></div>
           
           <span className="absolute left-2 top-2 md:left-4 md:top-4 text-4xl md:text-5xl text-[#2875B4]/30 select-none">
-            "
+            &quot;
           </span>
           
           <div className="relative z-10">
@@ -43,7 +43,7 @@ export default function AboutTestimonial() {
           </div>
           
           <span className="absolute right-2 bottom-2 md:right-4 md:bottom-4 text-4xl md:text-5xl text-[#7AB648]/30 select-none">
-            "
+            &quot;
           </span>
         </motion.blockquote>
         

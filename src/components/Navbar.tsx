@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -18,10 +20,10 @@ const Navbar: React.FC = () => {
       <nav className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <div className="flex items-center">
-          <a href="/" className="flex items-center group">
-            <img src="/logo.jpg" alt="IHAME Logistics Logo" className="w-20 h-14 rounded shadow-md object-cover" />
+          <Link href="/" className="flex items-center group">
+            <Image src="/logo.jpg" alt="IHAME Logistics Logo" width={80} height={56} className="w-20 h-14 rounded shadow-md object-cover" />
             <span className="ml-3 font-bold text-lg tracking-wide text-[#2875B4] group-hover:text-[#7AB648] transition-colors">IHAME LOGISTICS</span>
-          </a>
+          </Link>
         </div>
         {/* Hamburger only when menu is closed */}
         {!open && (
@@ -61,12 +63,13 @@ const Navbar: React.FC = () => {
               }}
               className={`text-3xl font-semibold opacity-0 transform -translate-x-8 transition-all duration-500 ${open ? "opacity-100 translate-x-0" : ""}`}
             >
-              <a
+              <Link
                 href={link.href}
                 className="focus:outline-none focus:underline text-white transition bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-blue-400 hover:via-blue-500 hover:to-blue-700"
+                onClick={() => setOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

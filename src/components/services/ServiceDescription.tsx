@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface ServiceDescriptionProps {
   title: string;
@@ -17,9 +17,11 @@ export default function ServiceDescription({ title, description, image, benefits
           {/* Left Column - Image */}
           <div className="order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img 
+              <Image 
                 src={image} 
                 alt={`${title} service`}
+                width={800}
+                height={400}
                 className="w-full h-[400px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />

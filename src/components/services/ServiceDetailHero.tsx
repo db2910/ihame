@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { useState } from 'react';
 import QuoteForm from '../contact/ContactForm';
 
@@ -9,10 +8,9 @@ interface ServiceDetailHeroProps {
   title: string;
   description: string;
   image: string;
-  slug: string;
 }
 
-export default function ServiceDetailHero({ title, description, image, slug }: ServiceDetailHeroProps) {
+export default function ServiceDetailHero({ title, description, image }: ServiceDetailHeroProps) {
   const [showQuote, setShowQuote] = useState(false);
   return (
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">

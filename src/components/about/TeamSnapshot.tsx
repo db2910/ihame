@@ -77,7 +77,7 @@ export default function TeamSnapshot() {
 
                 <div className="relative z-10 mb-6 flex-grow">
                   <blockquote className="text-gray-600 italic text-center text-sm leading-relaxed">
-                    "{member.quote}"
+                    &quot;{member.quote}&quot;
                   </blockquote>
                 </div>
 

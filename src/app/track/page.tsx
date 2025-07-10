@@ -205,7 +205,7 @@ function TrackContainerPageComponent() {
       } else {
         setResult(Array.isArray(data) ? data[0] : data);
       }
-    } catch (e) {
+    } catch {
       setError('An unexpected error occurred.');
     } finally {
       setIsLoading(false);
@@ -273,7 +273,7 @@ function TrackContainerPageComponent() {
             <div className="text-4xl mb-4">❌</div>
             <h3 className="text-xl font-semibold text-red-800 mb-2">Tracking Error</h3>
             <p className="text-red-600 mb-4">{error}</p>
-            <div className="mt-6 text-sm text-gray-500"><p>We couldn't find your container. Please verify the number and try again.</p></div>
+            <div className="mt-6 text-sm text-gray-500"><p>We couldn&apos;t find your container. Please verify the number and try again.</p></div>
           </motion.div>
         )}
         {result && !isLoading && !error && (

@@ -12,7 +12,7 @@ export default function FooterCta() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Let's get your shipment moving.</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Let&apos;s get your shipment moving.</h2>
           <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
             Ready to streamline your logistics? Contact our experts today for a personalized quote or to discuss your supply chain needs.
           </p>

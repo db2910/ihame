@@ -21,7 +21,7 @@ const staticPages = [
   'track',
 ];
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const urls = [
     ...staticPages.map((page) => `${BASE_URL}/${page}`.replace(/\/$/, '/')), // ensure trailing slash
     ...serviceSlugs.map((slug) => `${BASE_URL}/services/${slug}/`),
