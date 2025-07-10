@@ -5,27 +5,12 @@ import { useState, useEffect } from 'react';
 import TrackingForm from './TrackingForm';
 import TrackingResults from './TrackingResults';
 import LoadingSpinner from './LoadingSpinner';
+import { TrackingData } from '../../types/TrackingData';
 
 interface ErrorDetails {
   detectedCarrier?: string;
   trackingNumber?: string;
   [key: string]: string | undefined;
-}
-
-interface TrackingData {
-  tracking_number?: string;
-  courier?: string;
-  status?: string;
-  estimated_delivery?: string;
-  origin?: string;
-  destination?: string;
-  checkpoints?: Array<{
-    location: string;
-    timestamp: string;
-    status: string;
-    message: string;
-  }>;
-  [key: string]: unknown;
 }
 
 const loadingMessages = [

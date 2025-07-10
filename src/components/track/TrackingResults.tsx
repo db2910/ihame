@@ -1,21 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-
-interface TrackingData {
-  tracking_number: string;
-  courier: string;
-  status: string;
-  estimated_delivery?: string;
-  checkpoints?: Array<{
-    location: string;
-    timestamp: string;
-    status: string;
-    message: string;
-  }>;
-  origin?: string;
-  destination?: string;
-}
+import { TrackingData } from '../../types/TrackingData';
 
 interface TrackingResultsProps {
   data: TrackingData;

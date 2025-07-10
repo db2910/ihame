@@ -1,6 +1,6 @@
 const BASE_URL = 'https://ihamelogistics.com';
 
-// List all individual service slugs here
+// List all individual static service page slugs here (no dynamic [slug] pages)
 const serviceSlugs = [
   'freight-forwarding',
   'customs-clearance',
