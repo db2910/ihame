@@ -282,7 +282,7 @@ interface ServicePageProps {
   };
 }
 
-export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const service = servicesData[params.slug as keyof typeof servicesData];
   
   if (!service) {
@@ -315,7 +315,6 @@ export default function ServicePage({ params }: ServicePageProps) {
         title={service.title}
         description={service.description}
         image={service.heroImage}
-        slug={params.slug}
       />
       <ServiceDescription 
         title={service.title}
