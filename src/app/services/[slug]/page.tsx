@@ -296,6 +296,9 @@ export async function generateStaticParams() {
   return Object.keys(servicesData).map(slug => ({ slug }));
 }
 
+/**
+ * @param {{ params: { slug: string } }} props
+ */
 export default function ServicePage({ params }: { params: { slug: string } }) {
   const service = servicesData[params.slug as keyof typeof servicesData];
 

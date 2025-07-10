@@ -29,7 +29,7 @@ export default function WarehousingDeliveryPage() {
   return (
     <main className="min-h-screen">
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-        <ServiceDetailHero title={service.title} description={service.description} image={service.heroImage} slug="warehousing-delivery" />
+        <ServiceDetailHero title={service.title} description={service.description} image={service.heroImage} />
       </motion.div>
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}>
         <ServiceDescription title={service.title} description={service.longDescription} image={service.image} benefits={service.benefits} />

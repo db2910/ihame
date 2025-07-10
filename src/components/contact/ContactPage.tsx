@@ -35,7 +35,7 @@ const ContactPage = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
           >
-            <ContactForm />
+            <ContactForm service="General Inquiry" />
           </motion.div>
         </div>
       </div>
