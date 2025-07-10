@@ -276,12 +276,6 @@ const servicesData = {
   }
 };
 
-interface ServicePageProps {
-  params: {
-    slug: string;
-  };
-}
-
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const service = servicesData[params.slug as keyof typeof servicesData];
   
@@ -302,7 +296,7 @@ export async function generateStaticParams() {
   return Object.keys(servicesData).map(slug => ({ slug }));
 }
 
-export default function ServicePage({ params }: ServicePageProps) {
+export default function ServicePage({ params }: { params: { slug: string } }) {
   const service = servicesData[params.slug as keyof typeof servicesData];
 
   if (!service) {
