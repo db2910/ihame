@@ -77,7 +77,7 @@ export default function TrackingForm({ onSubmit }: TrackingFormProps) {
         transition={{ delay: 0.5 }}
         className="mt-6 text-center text-sm text-gray-500"
       >
-        <p>No need to select a carrier - we'll detect it automatically</p>
+        <p>No need to select a carrier - we&apos;ll detect it automatically</p>
       </motion.div>
     </motion.form>
   );

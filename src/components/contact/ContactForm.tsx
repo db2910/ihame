@@ -12,7 +12,7 @@ const inputVariants: Variants = {
   })
 };
 
-export default function QuoteForm({ service, onClose }: { service: string, onClose: () => void }) {
+export default function QuoteForm({ service }: { service: string }) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ export default function QuoteForm({ service, onClose }: { service: string, onClo
         const data = await res.json();
         setErrors({ message: data.error || 'Failed to send. Please try again.' });
       }
-    } catch (err) {
+    } catch {
       setErrors({ message: 'Network error. Please try again.' });
     }
     setLoading(false);

@@ -9,11 +9,23 @@ import LoadingSpinner from './LoadingSpinner';
 interface ErrorDetails {
   detectedCarrier?: string;
   trackingNumber?: string;
-  [key: string]: any;
+  [key: string]: string | undefined;
 }
 
 interface TrackingData {
-  [key: string]: any;
+  tracking_number?: string;
+  courier?: string;
+  status?: string;
+  estimated_delivery?: string;
+  origin?: string;
+  destination?: string;
+  checkpoints?: Array<{
+    location: string;
+    timestamp: string;
+    status: string;
+    message: string;
+  }>;
+  [key: string]: unknown;
 }
 
 const loadingMessages = [

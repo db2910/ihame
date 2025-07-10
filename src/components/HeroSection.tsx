@@ -4,29 +4,6 @@ import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
-
-function DistortedGlobe() {
-  return (
-    <Canvas camera={{ position: [0, 0, 6] }}>
-      <ambientLight intensity={0.7} />
-      <directionalLight position={[3, 5, 2]} intensity={0.7} />
-      <Suspense fallback={null}>
-        <Sphere args={[2.5, 64, 64]}>
-          <MeshDistortMaterial
-            color="#2875B4"
-            attach="material"
-            distort={0.5}
-            speed={2}
-            roughness={0}
-          />
-        </Sphere>
-        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.7} />
-      </Suspense>
-    </Canvas>
-  );
-}
 
 export default function HeroSection() {
   return (

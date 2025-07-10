@@ -1,5 +1,3 @@
-import { NextRequest } from 'next/server';
-
 const BASE_URL = 'https://ihamelogistics.com';
 
 // List all individual service slugs here

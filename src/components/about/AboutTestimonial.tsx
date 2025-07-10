@@ -17,7 +17,7 @@ export default function AboutTestimonial() {
         >
           <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/30">
             <div className="w-2 h-2 md:w-3 md:h-3 bg-[#7AB648] rounded-full"></div>
-            <span className="text-sm font-medium text-[#1A1A1A]">Founder's Vision</span>
+            <span className="text-sm font-medium text-[#1A1A1A]">Founder&apos;s Vision</span>
           </div>
         </motion.div>
         
