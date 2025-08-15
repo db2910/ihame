@@ -35,7 +35,7 @@ const cards = [
     ),
     title: 'Email',
     subtitle: 'Send us a detailed message',
-    value: 'ihamelogisticstosupply@gmail.com'
+    value: 'sales@ihame.rw'
   },
   {
     icon: (
