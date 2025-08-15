@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const ADMIN_EMAIL = 'donkyleben@gmail.com';
-// Use the Resend-provided sender for now; update to branded domain when available
-const FROM_EMAIL = 'onboarding@resend.dev';
+const ADMIN_EMAIL = 'sales@ihame.rw';
+// Professional email address - make sure domain is configured in Resend
+const FROM_EMAIL = 'sales@ihame.rw';
 
 interface FormData {
   name: string;
@@ -14,6 +14,13 @@ interface FormData {
 }
 
 async function sendEmail({ to, subject, html }: { to: string; subject: string; html: string }) {
+  console.log('Attempting to send email:', { to, subject, from: FROM_EMAIL });
+  
+  if (!RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not configured');
+    throw new Error('Resend API key not configured');
+  }
+
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -27,7 +34,18 @@ async function sendEmail({ to, subject, html }: { to: string; subject: string; h
       html,
     }),
   });
-  return res.ok;
+
+  console.log('Resend API response status:', res.status);
+  
+  if (!res.ok) {
+    const errorText = await res.text();
+    console.error('Resend API error:', errorText);
+    throw new Error(`Resend API error: ${res.status} - ${errorText}`);
+  }
+
+  const result = await res.json();
+  console.log('Resend API success:', result);
+  return result;
 }
 
 function adminEmailHtml(form: FormData) {
@@ -72,23 +90,40 @@ function userEmailHtml(form: FormData) {
 export async function POST(req: NextRequest) {
   try {
     const form = await req.json();
+    console.log('Received form data:', form);
+    
     if (!form.name || !form.email || !form.message) {
+      console.error('Missing required fields:', { name: !!form.name, email: !!form.email, message: !!form.message });
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
+
+    console.log('Sending admin email to:', ADMIN_EMAIL);
     // Send to admin
-    await sendEmail({
+    const adminResult = await sendEmail({
       to: ADMIN_EMAIL,
       subject: `New Website Inquiry from ${form.name}`,
       html: adminEmailHtml(form),
     });
+
+    console.log('Sending confirmation email to:', form.email);
     // Send confirmation to user
-    await sendEmail({
+    const userResult = await sendEmail({
       to: form.email,
       subject: 'We Received Your Request | IHAME Logistics',
       html: userEmailHtml(form),
     });
-    return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 });
+
+    console.log('Both emails sent successfully');
+    return NextResponse.json({ 
+      ok: true, 
+      adminEmailId: adminResult.id,
+      userEmailId: userResult.id 
+    });
+  } catch (error) {
+    console.error('Email sending failed:', error);
+    return NextResponse.json({ 
+      error: 'Failed to send email.',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
   }
 } 
