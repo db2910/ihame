@@ -12,8 +12,8 @@ const inputVariants: Variants = {
   })
 };
 
-export default function QuoteForm({ service }: { service: string }) {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
+export default function QuoteForm({ initialInquiryType = 'general' }: { initialInquiryType?: string }) {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '', inquiryType: initialInquiryType });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -29,7 +29,7 @@ export default function QuoteForm({ service }: { service: string }) {
     return errs;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
     if (errors[e.target.name]) {
       setErrors({ ...errors, [e.target.name]: '' });
@@ -45,6 +45,7 @@ export default function QuoteForm({ service }: { service: string }) {
     }
     setLoading(true);
     try {
+      const service = form.inquiryType === 'quote' ? 'Quote Request' : 'General Inquiry';
       const res = await fetch('/api/send-form-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -52,7 +53,7 @@ export default function QuoteForm({ service }: { service: string }) {
       });
       if (res.ok) {
         setSuccess(true);
-        setForm({ name: '', email: '', phone: '', message: '' });
+        setForm({ name: '', email: '', phone: '', message: '', inquiryType: 'general' });
         setTimeout(() => setSuccess(false), 4000);
       } else {
         const data = await res.json();
@@ -75,15 +76,15 @@ export default function QuoteForm({ service }: { service: string }) {
 
   return (
     <div className="bg-[#1a1a1a]/50 p-8 rounded-2xl border border-white/10 shadow-lg">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.8 }}
-        className="relative inline-block mb-4"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Request a Quote for {service}</h2>
-        <span className="block h-1 w-24 bg-gradient-to-r from-[#2470a9] to-[#8bc541] rounded-full mt-2" />
-      </motion.div>
+              <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="relative inline-block mb-4"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Contact Us</h2>
+          <span className="block h-1 w-24 bg-gradient-to-r from-[#2470a9] to-[#8bc541] rounded-full mt-2" />
+        </motion.div>
       <form onSubmit={handleSubmit} className="space-y-7 mt-4">
         <motion.div key="name" {...fieldProps(0)}>
           <label htmlFor="name" className="text-white/60 text-sm mb-1 block">
@@ -139,7 +140,22 @@ export default function QuoteForm({ service }: { service: string }) {
           />
           {errors.phone && <span className="text-red-400 text-xs mt-1">{errors.phone}</span>}
         </motion.div>
-        <motion.div key="message" {...fieldProps(3)}>
+        <motion.div key="inquiryType" {...fieldProps(3)}>
+          <label htmlFor="inquiryType" className="text-white/60 text-sm mb-1 block">
+            Type of Inquiry *
+          </label>
+          <select
+            id="inquiryType"
+            name="inquiryType"
+            value={form.inquiryType}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg bg-[#101010] text-white border-2 border-white/20 focus:border-[#8bc541] focus:outline-none transition-colors duration-300"
+          >
+            <option value="general">General Inquiry</option>
+            <option value="quote">Request a Quote</option>
+          </select>
+        </motion.div>
+        <motion.div key="message" {...fieldProps(4)}>
           <label htmlFor="message" className="text-white/60 text-sm mb-1 block">
             What do you need? *
           </label>
@@ -148,7 +164,7 @@ export default function QuoteForm({ service }: { service: string }) {
             name="message"
             value={form.message}
             onChange={handleChange}
-            placeholder={`Describe your logistics needs for ${service}...`}
+            placeholder="Describe your inquiry or logistics needs..."
             rows={5}
             className={`w-full px-4 py-3 rounded-lg bg-[#101010] text-white border-2 focus:outline-none transition-colors duration-300 ${
               errors.message ? 'border-red-500' : 'border-white/20 focus:border-[#8bc541]'
@@ -175,13 +191,13 @@ export default function QuoteForm({ service }: { service: string }) {
                   d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                 />
               </svg>
-              <span>Request Quote</span>
+              <span>{form.inquiryType === 'quote' ? 'Request Quote' : 'Send Message'}</span>
             </>
           )}
         </motion.button>
       </form>
       <div className="mt-6 text-sm text-[#8bc541]/80 bg-[#8bc541]/10 border border-[#8bc541]/20 rounded-lg p-3 text-center">
-        <strong>Quick Response:</strong> We typically respond to all quote requests within 2-4 hours during business hours.
+        <strong>Quick Response:</strong> We typically respond to all {form.inquiryType === 'quote' ? 'quote requests' : 'inquiries'} within 2-4 hours during business hours.
       </div>
       <AnimatePresence>
         {success && (
@@ -191,7 +207,7 @@ export default function QuoteForm({ service }: { service: string }) {
             exit={{ opacity: 0, scale: 0.9 }}
             className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 bg-gradient-to-r from-[#2470a9] to-[#8bc541] text-white px-8 py-4 rounded-xl shadow-2xl font-semibold text-lg flex items-center gap-3"
           >
-            <span>✅</span> Quote Request Sent!
+            <span>✅</span> {form.inquiryType === 'quote' ? 'Quote Request Sent!' : 'Message Sent!'}
           </motion.div>
         )}
       </AnimatePresence>

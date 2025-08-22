@@ -38,7 +38,11 @@ const Footer: React.FC = () => {
         {/* Contact Info & Socials */}
         <div className="flex flex-col space-y-3">
           <span className="font-semibold mb-3 text-lg text-[#7AB648]">Contact Us</span>
-          <span className="text-base">Email: <a href="mailto:ihamelogisticstosupply@gmail.com" className="hover:underline text-[#E0E0E0] hover:text-[#7AB648]">ihamelogisticstosupply@gmail.com</a></span>
+          <div className="space-y-2">
+            <span className="text-base">General Inquiries: <a href="mailto:info@ihame.rw" className="hover:underline text-[#E0E0E0] hover:text-[#7AB648]">info@ihame.rw</a></span>
+            <div className="w-8 h-px bg-[#7AB648]/30"></div>
+            <span className="text-base">Quote Requests: <a href="mailto:sales@ihame.rw" className="hover:underline text-[#E0E0E0] hover:text-[#7AB648]">sales@ihame.rw</a></span>
+          </div>
           <span className="text-base">Phone: <a href="tel:+250788693747" className="hover:underline text-[#E0E0E0] hover:text-[#7AB648]">+250 788 693 747</a></span>
           <span className="text-base">Location: Kigali, Rwanda</span>
           <div className="flex space-x-4 mt-4">

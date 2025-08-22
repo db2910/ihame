@@ -66,7 +66,7 @@ export default function ServiceDetailHero({ title, description, image }: Service
                   <span className="w-full h-full flex items-center justify-center">×</span>
                 </button>
                 <div className="pt-8 sm:pt-10">
-                  <QuoteForm service={title} />
+                  <QuoteForm initialInquiryType="quote" />
                 </div>
               </div>
             </div>

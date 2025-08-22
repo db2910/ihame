@@ -34,8 +34,17 @@ const cards = [
       </div>
     ),
     title: 'Email',
-    subtitle: 'Send us a detailed message',
-    value: 'sales@ihame.rw'
+    subtitle: 'Contact us for different inquiries',
+    value: (
+      <div className="space-y-2">
+        <div className="text-base font-medium text-[#8bc541]">
+          <span className="text-white/80">General Inquiries:</span> info@ihame.rw
+        </div>
+        <div className="text-base font-medium text-[#8bc541]">
+          <span className="text-white/80">Quote Requests:</span> sales@ihame.rw
+        </div>
+      </div>
+    )
   },
   {
     icon: (

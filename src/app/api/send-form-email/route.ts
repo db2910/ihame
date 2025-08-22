@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const ADMIN_EMAIL = 'sales@ihame.rw';
+const SALES_EMAIL = 'sales@ihame.rw';
+const INFO_EMAIL = 'info@ihame.rw';
 // Professional email address - make sure domain is configured in Resend
 const FROM_EMAIL = 'sales@ihame.rw';
 
@@ -97,11 +98,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
-    console.log('Sending admin email to:', ADMIN_EMAIL);
-    // Send to admin
+    // Determine which email to send to based on inquiry type
+    const isQuoteRequest = form.service && form.service.toLowerCase().includes('quote');
+    const adminEmail = isQuoteRequest ? SALES_EMAIL : INFO_EMAIL;
+    const emailType = isQuoteRequest ? 'Quote Request' : 'General Inquiry';
+    
+    console.log('Sending admin email to:', adminEmail, 'Type:', emailType);
+    // Send to appropriate admin email
     const adminResult = await sendEmail({
-      to: ADMIN_EMAIL,
-      subject: `New Website Inquiry from ${form.name}`,
+      to: adminEmail,
+      subject: `New ${emailType} from ${form.name}`,
       html: adminEmailHtml(form),
     });
 
