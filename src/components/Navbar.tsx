@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -14,15 +15,37 @@ const navLinks = [
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const heroHeight = window.innerHeight * 0.9; // 90vh hero section
+      setIsScrolled(scrollPosition > heroHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Determine which logo to show
+  const shouldShowWhiteLogo = !isScrolled && pathname !== '/contact';
+  const logoSource = shouldShowWhiteLogo ? '/IHAME-LOGO-white.png' : '/IHAME-LOGO-main-logo.png';
 
   return (
-    <header className="w-full z-50 bg-white border-b border-[#E0E0E0] shadow-md">
+    <header className="fixed top-0 left-0 right-0 w-full z-50 bg-transparent">
       <nav className="flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center group">
-            <Image src="/logo.jpg" alt="IHAME Logistics Logo" width={80} height={56} className="w-20 h-14 rounded shadow-md object-cover" />
-            <span className="ml-3 font-bold text-lg tracking-wide text-[#2875B4] group-hover:text-[#7AB648] transition-colors">IHAME LOGISTICS</span>
+            <Image 
+              src={logoSource}
+              alt="IHAME Logistics Logo" 
+              width={300} 
+              height={200} 
+              className="w-40 h-28 object-contain transition-all duration-300" 
+            />
           </Link>
         </div>
         {/* Hamburger only when menu is closed */}
@@ -32,9 +55,9 @@ const Navbar: React.FC = () => {
             className="relative w-10 h-10 flex flex-col justify-center items-center group focus:outline-none"
             onClick={() => setOpen(true)}
           >
-            <span className="block absolute h-0.5 w-7 bg-[#1A1A1A] rounded transition-all duration-300 ease-in-out -translate-y-2.5"></span>
-            <span className="block absolute h-0.5 w-7 bg-[#1A1A1A] rounded transition-all duration-300 ease-in-out"></span>
-            <span className="block absolute h-0.5 w-7 bg-[#1A1A1A] rounded transition-all duration-300 ease-in-out translate-y-2.5"></span>
+            <span className="block absolute h-0.5 w-7 bg-white rounded transition-all duration-300 ease-in-out -translate-y-2.5 drop-shadow-lg"></span>
+            <span className="block absolute h-0.5 w-7 bg-white rounded transition-all duration-300 ease-in-out drop-shadow-lg"></span>
+            <span className="block absolute h-0.5 w-7 bg-white rounded transition-all duration-300 ease-in-out translate-y-2.5 drop-shadow-lg"></span>
           </button>
         )}
       </nav>
@@ -54,6 +77,16 @@ const Navbar: React.FC = () => {
             <line x1="18" y1="6" x2="6" y2="18" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" />
           </svg>
         </button>
+        {/* Logo centered above links */}
+        <div className="mb-12">
+          <Image 
+            src={logoSource}
+            alt="IHAME Logistics Logo" 
+            width={300} 
+            height={200} 
+            className="w-40 h-28 object-contain" 
+          />
+        </div>
         <ul className="space-y-8">
           {navLinks.map((link, idx) => (
             <li

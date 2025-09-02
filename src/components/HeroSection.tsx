@@ -6,18 +6,25 @@ import Image from 'next/image';
 
 export default function HeroSection() {
   return (
-    <section className="relative h-[90vh] w-full overflow-hidden bg-gradient-to-br from-[#1A1A2E] to-[#2875B4] flex items-center justify-center">
-      {/* Background Image */}
+    <section className="relative h-[90vh] w-full overflow-hidden bg-gradient-to-br from-[#1A1A2E] to-[#2875B4] flex items-center justify-center pt-20">
+      {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero.jpeg"
-          alt="Logistics Hero"
-          fill
-          className="object-cover object-center opacity-60"
-          priority
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover"
+        >
+          <source src="/hero-video1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
-      {/* Text Content Over Image */}
+      {/* Dark Overlay for text readability */}
+      <div className="absolute inset-0 z-0 bg-black/50"></div>
+
+      {/* Text Content Over Video */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto px-4">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

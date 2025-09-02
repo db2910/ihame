@@ -17,8 +17,7 @@ const Footer: React.FC = () => {
         {/* Logo + Tagline */}
         <div className="flex flex-col items-start">
           <Link href="/" className="flex items-center group mb-3">
-            <Image src="/logo.jpg" alt="IHAME Logistics Logo" width={96} height={72} className="w-24 h-18 rounded shadow-md object-cover" />
-            <span className="ml-3 font-bold text-xl tracking-wide text-[#7AB648] group-hover:text-[#2875B4] transition-colors">IHAME LOGISTICS</span>
+            <Image src="/IHAME-LOGO-white.png" alt="IHAME Logistics Logo" width={300} height={200} className="w-40 h-28 object-contain" />
           </Link>
           <span className="text-base text-[#E0E0E0]">Your Order, Our Responsibility</span>
         </div>

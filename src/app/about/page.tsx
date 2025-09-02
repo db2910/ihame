@@ -4,6 +4,7 @@ import MissionVisionValues from '@/components/about/MissionVisionValues';
 import CompanyTimeline from '@/components/about/CompanyTimeline';
 import ImpactScale from '@/components/about/ImpactScale';
 import AboutTestimonial from '@/components/about/AboutTestimonial';
+import Partners from '@/components/Partners';
 import AboutCta from '@/components/about/AboutCta';
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function AboutPage() {
       <CompanyTimeline />
       <ImpactScale />
       <AboutTestimonial />
+      <Partners />
       <AboutCta />
     </main>
   );

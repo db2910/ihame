@@ -3,6 +3,7 @@ import ServicesPreview from "../components/ServicesPreview";
 import WhyIhame from "../components/WhyIhame";
 import TrackingCallout from "../components/TrackingCallout";
 import Testimonials from "../components/Testimonials";
+import Partners from "../components/Partners";
 import FooterCta from "../components/FooterCta";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <WhyIhame />
       <TrackingCallout />
       <Testimonials />
+      <Partners />
       <FooterCta />
     </main>
   );
