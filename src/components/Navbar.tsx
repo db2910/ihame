@@ -48,22 +48,47 @@ const Navbar: React.FC = () => {
             />
           </Link>
         </div>
-        {/* Hamburger only when menu is closed */}
-        {!open && (
-          <button
-            aria-label="Open menu"
-            className="relative w-10 h-10 flex flex-col justify-center items-center group focus:outline-none"
-            onClick={() => setOpen(true)}
-          >
-            <span className="block absolute h-0.5 w-7 bg-white rounded transition-all duration-300 ease-in-out -translate-y-2.5 drop-shadow-lg"></span>
-            <span className="block absolute h-0.5 w-7 bg-white rounded transition-all duration-300 ease-in-out drop-shadow-lg"></span>
-            <span className="block absolute h-0.5 w-7 bg-white rounded transition-all duration-300 ease-in-out translate-y-2.5 drop-shadow-lg"></span>
-          </button>
-        )}
+        
+        {/* Desktop Navigation Links - Hidden on mobile */}
+        <div className="hidden lg:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`text-lg font-medium transition-all duration-300 relative group ${
+                pathname === link.href
+                  ? 'text-transparent bg-gradient-to-r from-[#2875B4] to-[#7AB648] bg-clip-text'
+                  : isScrolled ? 'text-[#2875B4] hover:text-[#7AB648]' : 'text-white hover:text-[#7AB648]'
+              }`}
+            >
+              {link.name}
+              {pathname === link.href && (
+                <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-[#2875B4] to-[#7AB648] rounded-full"></div>
+              )}
+            </Link>
+          ))}
+        </div>
+        
+        {/* Hamburger Menu - Only visible on mobile */}
+        <button
+          aria-label="Open menu"
+          className="lg:hidden relative w-10 h-10 flex flex-col justify-center items-center group focus:outline-none"
+          onClick={() => setOpen(true)}
+        >
+          <span className={`block absolute h-0.5 w-7 rounded transition-all duration-300 ease-in-out -translate-y-2.5 drop-shadow-lg ${
+            isScrolled ? 'bg-[#2875B4]' : 'bg-white'
+          }`}></span>
+          <span className={`block absolute h-0.5 w-7 rounded transition-all duration-300 ease-in-out drop-shadow-lg ${
+            isScrolled ? 'bg-[#2875B4]' : 'bg-white'
+          }`}></span>
+          <span className={`block absolute h-0.5 w-7 rounded transition-all duration-300 ease-in-out translate-y-2.5 drop-shadow-lg ${
+            isScrolled ? 'bg-[#2875B4]' : 'bg-white'
+          }`}></span>
+        </button>
       </nav>
-      {/* Overlay */}
+      {/* Mobile Overlay - Only visible on mobile */}
       <div
-        className={`fixed inset-0 bg-gradient-to-tr from-[#1A1A2E] via-[#16213E] to-[#2875B4] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out z-40 ${open ? "translate-y-0" : "-translate-y-full"}`}
+        className={`lg:hidden fixed inset-0 bg-gradient-to-tr from-[#1A1A2E] via-[#16213E] to-[#2875B4] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out z-40 ${open ? "translate-y-0" : "-translate-y-full"}`}
         aria-hidden={!open}
       >
         {/* X icon in overlay */}

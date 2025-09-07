@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 import { Anchor, CheckCircle, CircleDot, FileText, Sailboat, ShieldAlert, ShipWheel, Truck, Warehouse } from 'lucide-react';
 import ContainerTrackingForm from '@/components/track/ContainerTrackingForm';
+import LocationsTicker from '@/components/LocationsTicker';
 
 // Updated interface to include all fields from the ShipsGo response
 interface ShipsGoData {
@@ -222,6 +223,7 @@ function TrackContainerPageComponent() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900">
+      <LocationsTicker />
       {/* Hero Section - Restored original design */}
       <section className="relative py-20 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 opacity-20">

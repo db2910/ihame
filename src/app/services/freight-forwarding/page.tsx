@@ -4,6 +4,7 @@ import ServiceDetailHero from '@/components/services/ServiceDetailHero';
 import ServiceDescription from '@/components/services/ServiceDescription';
 import ServiceFeatures from '@/components/services/ServiceFeatures';
 import ServiceCta from '@/components/services/ServiceCta';
+import LocationsTicker from '@/components/LocationsTicker';
 
 const service = {
   title: 'Freight Forwarding',
@@ -29,6 +30,7 @@ const service = {
 export default function FreightForwardingPage() {
   return (
     <main className="min-h-screen">
+      <LocationsTicker />
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
         <ServiceDetailHero title={service.title} description={service.description} image={service.heroImage} />
       </motion.div>

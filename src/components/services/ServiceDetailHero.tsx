@@ -10,14 +10,14 @@ interface ServiceDetailHeroProps {
   image: string;
 }
 
-export default function ServiceDetailHero({ title, description, image }: ServiceDetailHeroProps) {
+export default function ServiceDetailHero({ title, description }: ServiceDetailHeroProps) {
   const [showQuote, setShowQuote] = useState(false);
   return (
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: 'url("/hero-back.jpg")' }}
       />
       
       {/* Gradient Overlay */}

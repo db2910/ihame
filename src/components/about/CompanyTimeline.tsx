@@ -6,7 +6,7 @@ const timelineEvents = [
   {
     year: '2018',
     title: 'Company Founded',
-    description: 'IHAME Logistics & Supply LTD was established with a vision to revolutionize logistics in Africa.',
+    description: 'IHAME Logistics was established with a vision to revolutionize logistics in Africa.',
     color: 'from-blue-500 to-blue-600',
     achievement: 'First Milestone'
   },

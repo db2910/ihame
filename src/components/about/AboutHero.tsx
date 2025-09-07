@@ -132,7 +132,7 @@ export default function AboutHero() {
       <motion.div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url("/images/hero.jpeg")',
+          backgroundImage: 'url("/hero-back.jpg")',
           y,
           opacity,
           scale
@@ -244,7 +244,7 @@ export default function AboutHero() {
           transition={{ delay: 0.2, duration: 0.7 }}
           className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-6"
         >
-          <span className="bg-gradient-to-r from-[#2875B4] to-[#7AB648] bg-clip-text text-transparent">IHAME</span> LOGISTICS & <span className="bg-gradient-to-r from-[#2875B4] to-[#7AB648] bg-clip-text text-transparent">SUPPLY</span> LTD
+          <span className="bg-gradient-to-r from-[#2875B4] to-[#7AB648] bg-clip-text text-transparent">IHAME</span> LOGISTICS
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

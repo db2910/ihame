@@ -2,28 +2,25 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function HeroSection() {
   return (
     <section className="relative h-[90vh] w-full overflow-hidden bg-gradient-to-br from-[#1A1A2E] to-[#2875B4] flex items-center justify-center pt-20">
-      {/* Video Background */}
+      {/* Image Background */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="w-full h-full object-cover"
-        >
-          <source src="/hero-video1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <Image
+          src="/hero-back.jpg"
+          alt="IHAME Logistics Hero Background"
+          fill
+          className="object-cover"
+          priority
+        />
       </div>
       {/* Dark Overlay for text readability */}
       <div className="absolute inset-0 z-0 bg-black/50"></div>
 
-      {/* Text Content Over Video */}
+      {/* Text Content Over Image */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto px-4">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -31,7 +28,7 @@ export default function HeroSection() {
           transition={{ delay: 0.2, duration: 0.7 }}
           className="text-5xl lg:text-7xl font-extrabold text-white drop-shadow-lg"
         >
-          <span className="bg-gradient-to-r from-[#2875B4] to-[#7AB648] bg-clip-text text-transparent">IHAME</span> <span>LOGISTICS &</span> <span className="bg-gradient-to-r from-[#2875B4] to-[#7AB648] bg-clip-text text-transparent">SUPPLY</span> <span>LTD</span>
+          <span className="bg-gradient-to-r from-[#2875B4] to-[#7AB648] bg-clip-text text-transparent">IHAME</span> <span>LOGISTICS</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

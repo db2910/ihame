@@ -8,14 +8,14 @@ import Footer from "../components/Footer";
 const inter = Geist({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "IHAME LOGISTICS & SUPPLY LTD",
+  title: "IHAME LOGISTICS",
   description: "Your Order, Our Responsibility."
 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'IHAME LOGISTICS & SUPPLY LTD',
+      name: 'IHAME LOGISTICS',
   url: 'https://ihame-logistics.com/',
   logo: 'https://ihame-logistics.com/logo.png', // Replace with your actual logo URL
   contactPoint: {

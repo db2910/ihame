@@ -61,7 +61,7 @@ function adminEmailHtml(form: FormData) {
         <tr><td style="font-weight: bold; color: #2875B4; padding: 8px 0;">Service:</td><td>${form.service || 'General Inquiry'}</td></tr>
         <tr><td style="font-weight: bold; color: #2875B4; padding: 8px 0;">Message:</td><td>${form.message}</td></tr>
       </table>
-      <div style="margin-top: 32px; color: #888; font-size: 13px;">IHAME Logistics & Supply LTD | Website Form Notification</div>
+              <div style="margin-top: 32px; color: #888; font-size: 13px;">IHAME Logistics | Website Form Notification</div>
     </div>
   `;
 }
@@ -83,7 +83,7 @@ function userEmailHtml(form: FormData) {
         </ul>
       </div>
       <p style="color: #333; font-size: 15px;">If you have any urgent questions, feel free to reply to this email or call us directly.</p>
-      <div style="margin-top: 32px; color: #888; font-size: 13px;">IHAME Logistics & Supply LTD | Kigali, Rwanda</div>
+              <div style="margin-top: 32px; color: #888; font-size: 13px;">IHAME Logistics | Kigali, Rwanda</div>
     </div>
   `;
 }
